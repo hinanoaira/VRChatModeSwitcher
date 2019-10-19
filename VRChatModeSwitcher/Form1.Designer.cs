@@ -1,6 +1,6 @@
 ﻿namespace VRChatModeSwitcher
 {
-    partial class VRChatModeSwitcher
+    partial class formVRChatModeSwitcher
     {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formVRChatModeSwitcher));
             this.labelLink = new System.Windows.Forms.Label();
             this.textBoxLink = new System.Windows.Forms.TextBox();
             this.buttonSelectVR = new System.Windows.Forms.Button();
@@ -35,7 +36,9 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.labelParallel = new System.Windows.Forms.Label();
             this.intboxParallel = new System.Windows.Forms.NumericUpDown();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.intboxParallel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelLink
@@ -47,19 +50,17 @@
             this.labelLink.Size = new System.Drawing.Size(55, 15);
             this.labelLink.TabIndex = 0;
             this.labelLink.Text = "起動リンク";
+            this.labelLink.Click += new System.EventHandler(this.labelLink_Click);
             // 
             // textBoxLink
             // 
-            this.textBoxLink.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxLink.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBoxLink.Location = new System.Drawing.Point(16, 31);
             this.textBoxLink.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxLink.Multiline = true;
             this.textBoxLink.Name = "textBoxLink";
             this.textBoxLink.ReadOnly = true;
-            this.textBoxLink.Size = new System.Drawing.Size(228, 158);
+            this.textBoxLink.Size = new System.Drawing.Size(226, 158);
             this.textBoxLink.TabIndex = 1;
             // 
             // buttonSelectVR
@@ -77,7 +78,7 @@
             // buttonSelectDesktop
             // 
             this.buttonSelectDesktop.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSelectDesktop.Location = new System.Drawing.Point(133, 197);
+            this.buttonSelectDesktop.Location = new System.Drawing.Point(131, 197);
             this.buttonSelectDesktop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonSelectDesktop.Name = "buttonSelectDesktop";
             this.buttonSelectDesktop.Size = new System.Drawing.Size(111, 50);
@@ -88,7 +89,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(169, 254);
+            this.buttonCancel.Location = new System.Drawing.Point(167, 254);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 4;
@@ -117,11 +118,22 @@
             0,
             0});
             // 
-            // VRChatModeSwitcher
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(541, 284);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(512, 288);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // formVRChatModeSwitcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(256, 287);
+            this.ClientSize = new System.Drawing.Size(254, 285);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.intboxParallel);
             this.Controls.Add(this.labelParallel);
             this.Controls.Add(this.buttonCancel);
@@ -134,9 +146,10 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "VRChatModeSwitcher";
+            this.Name = "formVRChatModeSwitcher";
             this.Text = "VRChat Mode Switcher";
             ((System.ComponentModel.ISupportInitialize)(this.intboxParallel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,6 +164,7 @@
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Label labelParallel;
         private System.Windows.Forms.NumericUpDown intboxParallel;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

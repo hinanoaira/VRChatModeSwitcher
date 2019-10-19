@@ -5,12 +5,12 @@ using System.Windows.Forms;
 
 namespace VRChatModeSwitcher
 {
-    public partial class VRChatModeSwitcher : Form
+    public partial class formVRChatModeSwitcher : Form
     {
         // 初期化
         private readonly string[] args;
         private readonly string arg;
-        public VRChatModeSwitcher(string[] inArgs)
+        public formVRChatModeSwitcher(string[] inArgs)
         {
             args = inArgs;
             arg = "";
@@ -89,6 +89,14 @@ namespace VRChatModeSwitcher
             }
 
             return false;
+        }
+
+        int eggCount = 0;
+        private void labelLink_Click(object sender, EventArgs e)
+        {
+            eggCount++;
+            if (eggCount == 10)
+                this.FormBorderStyle = FormBorderStyle.Sizable;
         }
     }
 }

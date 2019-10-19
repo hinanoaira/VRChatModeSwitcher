@@ -13,7 +13,7 @@ namespace VRChatModeSwitcher
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new VRChatModeSwitcher(args));
+            Application.Run(new formVRChatModeSwitcher(args));
         }
     }
 }
