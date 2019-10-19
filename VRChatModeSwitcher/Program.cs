@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VRChatModeSwitcher
@@ -12,11 +9,11 @@ namespace VRChatModeSwitcher
         /// アプリケーションのメイン エントリ ポイントです。
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new VRChatModeSwitcher());
+            Application.Run(new VRChatModeSwitcher(args));
         }
     }
 }

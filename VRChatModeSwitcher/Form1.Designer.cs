@@ -72,6 +72,7 @@
             this.buttonSelectVR.TabIndex = 2;
             this.buttonSelectVR.Text = "VR";
             this.buttonSelectVR.UseVisualStyleBackColor = true;
+            this.buttonSelectVR.Click += new System.EventHandler(this.ButtonSelectVR_Click);
             // 
             // buttonSelectDesktop
             // 
@@ -83,6 +84,7 @@
             this.buttonSelectDesktop.TabIndex = 3;
             this.buttonSelectDesktop.Text = "Desktop";
             this.buttonSelectDesktop.UseVisualStyleBackColor = true;
+            this.buttonSelectDesktop.Click += new System.EventHandler(this.ButtonSelectDesktop_Click);
             // 
             // buttonCancel
             // 
@@ -92,6 +94,7 @@
             this.buttonCancel.TabIndex = 4;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
             // labelParallel
             // 
