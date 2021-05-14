@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using System.Configuration;
+using System.IO;
+using System.Reflection;
 
 namespace VRChatModeSwitcher
 {
@@ -52,20 +54,27 @@ namespace VRChatModeSwitcher
             oculusPath = ConfigurationManager.AppSettings["oculusPath"];
 
             if (steamPath == "" && oculusPath == "")
+            {
                 MessageBox.Show("Steam版VRChatのインストール場所の読み込みに失敗しました。\n設定からSteam版かOculus版のVRChat.exeのパスを設定してください。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                buttonSelectDesktop.Enabled = false;
+                buttonSelectVR.Enabled = false;
+                radioSteam.Enabled = false;
+                radioOculus.Enabled = false;
+            }
             else
             {
-                if (steamPath != "")
-                    radioSteam.Enabled = true;
-                if (oculusPath != "")
-                    radioOculus.Enabled = true;
+                var radioSelected = ConfigurationManager.AppSettings["selected"];
+                if (radioSelected == "1")
+                    radioSteam.Checked = true;
+                else if (radioSelected == "2")
+                    radioOculus.Checked = true;
+
+                radioSteam.Enabled = (steamPath != "");
+                radioOculus.Enabled = (oculusPath != "");
+                buttonSelectDesktop.Enabled = (radioOculus.Checked || radioSteam.Checked);
+                buttonSelectVR.Enabled = (radioOculus.Checked || radioSteam.Checked);
             }
 
-            var radioSelected = ConfigurationManager.AppSettings["selected"];
-            if (radioSelected == "1")
-                radioSteam.Checked = true;
-            else if (radioSelected == "2")
-                radioOculus.Checked = true;
         }
 
         // クリックイベント
@@ -79,10 +88,9 @@ namespace VRChatModeSwitcher
 
         private void ButtonSelectDesktop_Click(object sender, EventArgs e)
         {
-            //bool result = RunVRChat(false);
-            //if (result)
-            //    Application.Exit();
-            MessageBox.Show(steamPath + "\n" + oculusPath);
+            bool result = RunVRChat(false);
+            if (result)
+                Application.Exit();
         }
 
         private void ButtonCancel_Click(object sender, EventArgs e)
@@ -99,9 +107,15 @@ namespace VRChatModeSwitcher
             ProcessStartInfo psi = new ProcessStartInfo();
             psi.FileName = "VRChat.exe";
             psi.Arguments = outArg;
+            string path = "";
 
+            if (radioSteam.Checked)
+                path = Path.GetDirectoryName(steamPath);
+            else if (radioOculus.Checked)
+                path = Path.GetDirectoryName(oculusPath);
             try
             {
+                Environment.CurrentDirectory = path;
                 for (int i = 0; i < intboxParallel.Value; i++)
                 {
                     Process p = Process.Start(psi);
@@ -121,7 +135,9 @@ namespace VRChatModeSwitcher
             {
                 MessageBox.Show("VRChatの起動に失敗しました。\n未知のエラーが発生しました。\nエラーメッセージ : " + ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            Assembly myAssembly = Assembly.GetEntryAssembly();
+            path = Path.GetDirectoryName(myAssembly.Location);
+            Environment.CurrentDirectory = path;
             return false;
         }
 
@@ -138,6 +154,20 @@ namespace VRChatModeSwitcher
             Form2 fs2 = new Form2();
             fs2.ShowDialog(this);
             ConfigLoad();
+        }
+
+        private void radioSteam_CheckedChanged(object sender, EventArgs e)
+        {
+            buttonSelectDesktop.Enabled = true;
+            buttonSelectVR.Enabled = true;
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            if (radioSteam.Checked)
+                config.AppSettings.Settings["Selected"].Value = "1";
+            else
+                config.AppSettings.Settings["Selected"].Value = "2";
+
+            config.Save();
         }
     }
 }

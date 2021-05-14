@@ -1,6 +1,10 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
+using System.Diagnostics;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace VRChatModeSwitcher
@@ -60,6 +64,27 @@ namespace VRChatModeSwitcher
                     this.textOculusPath.Text = dlg.FileName;
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            RegistryKey rkey = Registry.ClassesRoot.OpenSubKey(@"VRChat\shell\open\command", true);
+            if (rkey != null)
+            {
+                DialogResult result = MessageBox.Show("起動リンクに紐づけしますか？",
+                "質問",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Exclamation,
+                MessageBoxDefaultButton.Button2);
+                if (result == DialogResult.Yes)
+                {
+                    Assembly myAssembly = Assembly.GetEntryAssembly();
+                    string path = myAssembly.Location;
+                    rkey.SetValue("", "\"" + path + @""" ""%1"" %*");
+                }
+            }
+            else
+                MessageBox.Show("先にVRChatを起動して起動リンクを仕込んでおいてください。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

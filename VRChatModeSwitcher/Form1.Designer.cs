@@ -108,6 +108,7 @@
             this.labelParallel.Size = new System.Drawing.Size(67, 15);
             this.labelParallel.TabIndex = 5;
             this.labelParallel.Text = "同時起動数";
+            this.labelParallel.Visible = false;
             // 
             // intboxParallel
             // 
@@ -120,6 +121,7 @@
             0,
             0,
             0});
+            this.intboxParallel.Visible = false;
             // 
             // pictureBox1
             // 
@@ -142,6 +144,7 @@
             this.radioSteam.TabStop = true;
             this.radioSteam.Text = "Steam";
             this.radioSteam.UseVisualStyleBackColor = true;
+            this.radioSteam.CheckedChanged += new System.EventHandler(this.radioSteam_CheckedChanged);
             // 
             // radioOculus
             // 
