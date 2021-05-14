@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.ComponentModel;
 using System.Windows.Forms;
+using Microsoft.Win32;
+using System.Configuration;
 
 namespace VRChatModeSwitcher
 {
@@ -19,6 +21,7 @@ namespace VRChatModeSwitcher
                 arg += item + " ";
             }
             InitializeComponent();
+            ConfigLoad();
 
             if (arg == "")
                 textBoxLink.Text = "-no arguments-";
@@ -35,6 +38,36 @@ namespace VRChatModeSwitcher
             intboxParallel.Visible = true;
         }
 
+        string steamPath;
+        string oculusPath;
+        private void ConfigLoad()
+        {
+            var test = Environment.Is64BitOperatingSystem && !Environment.Is64BitProcess;
+            RegistryKey rkey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 438100");
+            if (rkey != null)
+                steamPath = (string)rkey.GetValue("InstallLocation") + @"\VRChat.exe";
+            else
+                steamPath = ConfigurationManager.AppSettings["steamPath"];
+
+            oculusPath = ConfigurationManager.AppSettings["oculusPath"];
+
+            if (steamPath == "" && oculusPath == "")
+                MessageBox.Show("Steam版VRChatのインストール場所の読み込みに失敗しました。\n設定からSteam版かOculus版のVRChat.exeのパスを設定してください。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                if (steamPath != "")
+                    radioSteam.Enabled = true;
+                if (oculusPath != "")
+                    radioOculus.Enabled = true;
+            }
+
+            var radioSelected = ConfigurationManager.AppSettings["selected"];
+            if (radioSelected == "1")
+                radioSteam.Checked = true;
+            else if (radioSelected == "2")
+                radioOculus.Checked = true;
+        }
+
         // クリックイベント
 
         private void ButtonSelectVR_Click(object sender, EventArgs e)
@@ -46,9 +79,10 @@ namespace VRChatModeSwitcher
 
         private void ButtonSelectDesktop_Click(object sender, EventArgs e)
         {
-            bool result = RunVRChat(false);
-            if (result)
-                Application.Exit();
+            //bool result = RunVRChat(false);
+            //if (result)
+            //    Application.Exit();
+            MessageBox.Show(steamPath + "\n" + oculusPath);
         }
 
         private void ButtonCancel_Click(object sender, EventArgs e)
@@ -97,6 +131,13 @@ namespace VRChatModeSwitcher
             eggCount++;
             if (eggCount == 10)
                 this.FormBorderStyle = FormBorderStyle.Sizable;
+        }
+
+        private void buttonSetting_Click(object sender, EventArgs e)
+        {
+            Form2 fs2 = new Form2();
+            fs2.ShowDialog(this);
+            ConfigLoad();
         }
     }
 }

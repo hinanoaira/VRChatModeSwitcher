@@ -37,6 +37,9 @@
             this.labelParallel = new System.Windows.Forms.Label();
             this.intboxParallel = new System.Windows.Forms.NumericUpDown();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.radioSteam = new System.Windows.Forms.RadioButton();
+            this.radioOculus = new System.Windows.Forms.RadioButton();
+            this.buttonSetting = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.intboxParallel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -66,10 +69,10 @@
             // buttonSelectVR
             // 
             this.buttonSelectVR.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSelectVR.Location = new System.Drawing.Point(16, 197);
+            this.buttonSelectVR.Location = new System.Drawing.Point(17, 214);
             this.buttonSelectVR.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonSelectVR.Name = "buttonSelectVR";
-            this.buttonSelectVR.Size = new System.Drawing.Size(111, 50);
+            this.buttonSelectVR.Size = new System.Drawing.Size(111, 45);
             this.buttonSelectVR.TabIndex = 2;
             this.buttonSelectVR.Text = "VR";
             this.buttonSelectVR.UseVisualStyleBackColor = true;
@@ -78,10 +81,10 @@
             // buttonSelectDesktop
             // 
             this.buttonSelectDesktop.Font = new System.Drawing.Font("Meiryo UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonSelectDesktop.Location = new System.Drawing.Point(131, 197);
+            this.buttonSelectDesktop.Location = new System.Drawing.Point(131, 214);
             this.buttonSelectDesktop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonSelectDesktop.Name = "buttonSelectDesktop";
-            this.buttonSelectDesktop.Size = new System.Drawing.Size(111, 50);
+            this.buttonSelectDesktop.Size = new System.Drawing.Size(111, 45);
             this.buttonSelectDesktop.TabIndex = 3;
             this.buttonSelectDesktop.Text = "Desktop";
             this.buttonSelectDesktop.UseVisualStyleBackColor = true;
@@ -89,7 +92,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(167, 254);
+            this.buttonCancel.Location = new System.Drawing.Point(167, 266);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 4;
@@ -100,7 +103,7 @@
             // labelParallel
             // 
             this.labelParallel.AutoSize = true;
-            this.labelParallel.Location = new System.Drawing.Point(14, 258);
+            this.labelParallel.Location = new System.Drawing.Point(12, 268);
             this.labelParallel.Name = "labelParallel";
             this.labelParallel.Size = new System.Drawing.Size(67, 15);
             this.labelParallel.TabIndex = 5;
@@ -108,7 +111,7 @@
             // 
             // intboxParallel
             // 
-            this.intboxParallel.Location = new System.Drawing.Point(87, 254);
+            this.intboxParallel.Location = new System.Drawing.Point(87, 266);
             this.intboxParallel.Name = "intboxParallel";
             this.intboxParallel.Size = new System.Drawing.Size(54, 23);
             this.intboxParallel.TabIndex = 6;
@@ -128,11 +131,48 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
+            // radioSteam
+            // 
+            this.radioSteam.AutoSize = true;
+            this.radioSteam.Enabled = false;
+            this.radioSteam.Location = new System.Drawing.Point(109, 196);
+            this.radioSteam.Name = "radioSteam";
+            this.radioSteam.Size = new System.Drawing.Size(64, 19);
+            this.radioSteam.TabIndex = 8;
+            this.radioSteam.TabStop = true;
+            this.radioSteam.Text = "Steam";
+            this.radioSteam.UseVisualStyleBackColor = true;
+            // 
+            // radioOculus
+            // 
+            this.radioOculus.AutoSize = true;
+            this.radioOculus.Enabled = false;
+            this.radioOculus.Location = new System.Drawing.Point(179, 196);
+            this.radioOculus.Name = "radioOculus";
+            this.radioOculus.Size = new System.Drawing.Size(63, 19);
+            this.radioOculus.TabIndex = 9;
+            this.radioOculus.TabStop = true;
+            this.radioOculus.Text = "Oculus";
+            this.radioOculus.UseVisualStyleBackColor = true;
+            // 
+            // buttonSetting
+            // 
+            this.buttonSetting.Location = new System.Drawing.Point(167, 3);
+            this.buttonSetting.Name = "buttonSetting";
+            this.buttonSetting.Size = new System.Drawing.Size(75, 23);
+            this.buttonSetting.TabIndex = 10;
+            this.buttonSetting.Text = "設定";
+            this.buttonSetting.UseVisualStyleBackColor = true;
+            this.buttonSetting.Click += new System.EventHandler(this.buttonSetting_Click);
+            // 
             // formVRChatModeSwitcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(254, 285);
+            this.ClientSize = new System.Drawing.Size(254, 301);
+            this.Controls.Add(this.buttonSetting);
+            this.Controls.Add(this.radioOculus);
+            this.Controls.Add(this.radioSteam);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.intboxParallel);
             this.Controls.Add(this.labelParallel);
@@ -165,6 +205,9 @@
         private System.Windows.Forms.Label labelParallel;
         private System.Windows.Forms.NumericUpDown intboxParallel;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.RadioButton radioSteam;
+        private System.Windows.Forms.RadioButton radioOculus;
+        private System.Windows.Forms.Button buttonSetting;
     }
 }
 
