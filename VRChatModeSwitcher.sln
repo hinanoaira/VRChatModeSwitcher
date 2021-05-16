@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VRChatModeSwitcher", "VRCha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArgDisp", "ArgDisp\ArgDisp.csproj", "{6C8B2077-391F-4508-95CD-793B5D2E3AF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkInstaller", "Installer\LinkInstaller.csproj", "{0BAB13F8-91E3-4145-A5A7-DE5C02440C3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{6C8B2077-391F-4508-95CD-793B5D2E3AF6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6C8B2077-391F-4508-95CD-793B5D2E3AF6}.Release|x64.ActiveCfg = Release|Any CPU
 		{6C8B2077-391F-4508-95CD-793B5D2E3AF6}.Release|x64.Build.0 = Release|Any CPU
+		{0BAB13F8-91E3-4145-A5A7-DE5C02440C3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BAB13F8-91E3-4145-A5A7-DE5C02440C3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BAB13F8-91E3-4145-A5A7-DE5C02440C3A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0BAB13F8-91E3-4145-A5A7-DE5C02440C3A}.Debug|x64.Build.0 = Debug|Any CPU
+		{0BAB13F8-91E3-4145-A5A7-DE5C02440C3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BAB13F8-91E3-4145-A5A7-DE5C02440C3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BAB13F8-91E3-4145-A5A7-DE5C02440C3A}.Release|x64.ActiveCfg = Release|Any CPU
+		{0BAB13F8-91E3-4145-A5A7-DE5C02440C3A}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -68,7 +68,7 @@ namespace VRChatModeSwitcher
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RegistryKey rkey = Registry.ClassesRoot.OpenSubKey(@"VRChat\shell\open\command", true);
+            RegistryKey rkey = Registry.ClassesRoot.OpenSubKey(@"VRChat\shell\open\command");
             if (rkey != null)
             {
                 DialogResult result = MessageBox.Show("起動リンクに紐づけしますか？",
@@ -78,9 +78,8 @@ namespace VRChatModeSwitcher
                 MessageBoxDefaultButton.Button2);
                 if (result == DialogResult.Yes)
                 {
-                    Assembly myAssembly = Assembly.GetEntryAssembly();
-                    string path = myAssembly.Location;
-                    rkey.SetValue("", "\"" + path + @""" ""%1"" %*");
+                    ProcessStartInfo psi = new ProcessStartInfo("LinkInstaller.exe");
+                    Process.Start(psi);
                 }
             }
             else

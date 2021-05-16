@@ -78,7 +78,6 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interface1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -111,6 +110,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="pic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Installer\LinkInstaller.csproj">
+      <Project>{0bab13f8-91e3-4145-a5a7-de5c02440c3a}</Project>
+      <Name>LinkInstaller</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
