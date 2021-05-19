@@ -85,5 +85,16 @@ namespace VRChatModeSwitcher
             else
                 MessageBox.Show("先にVRChatを起動して起動リンクを仕込んでおいてください。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        int eggCount = 0;
+        private void button4_Click(object sender, EventArgs e)
+        {
+            eggCount++;
+            if (eggCount >= 10)
+            {
+                Form3 fs3 = new Form3();
+                fs3.ShowDialog();
+            }
+        }
     }
 }

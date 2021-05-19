@@ -141,14 +141,6 @@ namespace VRChatModeSwitcher
             return false;
         }
 
-        int eggCount = 0;
-        private void labelLink_Click(object sender, EventArgs e)
-        {
-            eggCount++;
-            if (eggCount == 10)
-                this.FormBorderStyle = FormBorderStyle.Sizable;
-        }
-
         private void buttonSetting_Click(object sender, EventArgs e)
         {
             Form2 fs2 = new Form2();

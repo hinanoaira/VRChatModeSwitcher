@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formVRChatModeSwitcher));
             this.labelLink = new System.Windows.Forms.Label();
             this.textBoxLink = new System.Windows.Forms.TextBox();
             this.buttonSelectVR = new System.Windows.Forms.Button();
@@ -36,12 +35,10 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.labelParallel = new System.Windows.Forms.Label();
             this.intboxParallel = new System.Windows.Forms.NumericUpDown();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.radioSteam = new System.Windows.Forms.RadioButton();
             this.radioOculus = new System.Windows.Forms.RadioButton();
             this.buttonSetting = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.intboxParallel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelLink
@@ -53,7 +50,6 @@
             this.labelLink.Size = new System.Drawing.Size(55, 15);
             this.labelLink.TabIndex = 0;
             this.labelLink.Text = "起動リンク";
-            this.labelLink.Click += new System.EventHandler(this.labelLink_Click);
             // 
             // textBoxLink
             // 
@@ -123,16 +119,6 @@
             0});
             this.intboxParallel.Visible = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(541, 284);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(512, 288);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            // 
             // radioSteam
             // 
             this.radioSteam.AutoSize = true;
@@ -176,7 +162,6 @@
             this.Controls.Add(this.buttonSetting);
             this.Controls.Add(this.radioOculus);
             this.Controls.Add(this.radioSteam);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.intboxParallel);
             this.Controls.Add(this.labelParallel);
             this.Controls.Add(this.buttonCancel);
@@ -192,7 +177,6 @@
             this.Name = "formVRChatModeSwitcher";
             this.Text = "VRChat Mode Switcher";
             ((System.ComponentModel.ISupportInitialize)(this.intboxParallel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,7 +191,6 @@
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Label labelParallel;
         private System.Windows.Forms.NumericUpDown intboxParallel;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.RadioButton radioSteam;
         private System.Windows.Forms.RadioButton radioOculus;
         private System.Windows.Forms.Button buttonSetting;
