@@ -33,6 +33,7 @@ namespace VRChatModeSwitcher
             if (rkey == null)
                 config.AppSettings.Settings["steamPath"].Value = textSteamPath.Text;
             config.AppSettings.Settings["oculusPath"].Value = textOculusPath.Text;
+            config.AppSettings.Settings["Arguments"].Value = textArguments.Text;
             config.Save();
             ConfigurationManager.RefreshSection("appSettings");
             this.Close();

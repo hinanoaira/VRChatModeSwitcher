@@ -42,6 +42,7 @@ namespace VRChatModeSwitcher
 
         string steamPath;
         string oculusPath;
+        string arguments;
         private void ConfigLoad()
         {
             var test = Environment.Is64BitOperatingSystem && !Environment.Is64BitProcess;
@@ -52,6 +53,7 @@ namespace VRChatModeSwitcher
                 steamPath = ConfigurationManager.AppSettings["steamPath"];
 
             oculusPath = ConfigurationManager.AppSettings["oculusPath"];
+            arguments = ConfigurationManager.AppSettings["Arguments"];
 
             if (steamPath == "" && oculusPath == "")
             {
@@ -101,8 +103,10 @@ namespace VRChatModeSwitcher
         private bool RunVRChat(bool VRMode)
         {
             string outArg = arg;
+            if (arguments != "")
+                outArg = $"{arguments} {outArg}";
             if (!VRMode)
-                outArg = "--no-vr " + outArg;
+                outArg = $"--no-vr {outArg}";
 
             ProcessStartInfo psi = new ProcessStartInfo();
             psi.FileName = "VRChat.exe";
@@ -119,8 +123,7 @@ namespace VRChatModeSwitcher
                 for (int i = 0; i < intboxParallel.Value; i++)
                 {
                     Process p = Process.Start(psi);
-                    if (VRMode)
-                        if(i == 0) psi.Arguments = "--no-vr " + outArg;
+                    if (VRMode && i == 0) psi.Arguments = $"--no-vr {outArg}";
                 }
                 return true;
             }
