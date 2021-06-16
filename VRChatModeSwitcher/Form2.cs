@@ -15,9 +15,8 @@ namespace VRChatModeSwitcher
         {
             InitializeComponent();
             RegistryKey rkey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 438100");
-            if (rkey != null)
+            if (rkey != null && textSteamPath.Text == "")
             {
-                textSteamPath.ReadOnly = true;
                 textSteamPath.Text = (string)rkey.GetValue("InstallLocation") + @"\VRChat.exe";
                 button2.Enabled = false;
             }
