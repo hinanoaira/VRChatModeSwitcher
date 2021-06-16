@@ -14,14 +14,13 @@ namespace VRChatModeSwitcher
         public Form2()
         {
             InitializeComponent();
+            textSteamPath.Text = ConfigurationManager.AppSettings["steamPath"];
             RegistryKey rkey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 438100");
             if (rkey != null && textSteamPath.Text == "")
             {
                 textSteamPath.Text = (string)rkey.GetValue("InstallLocation") + @"\VRChat.exe";
                 button2.Enabled = false;
             }
-            else
-                textSteamPath.Text = ConfigurationManager.AppSettings["steamPath"];
             textOculusPath.Text = ConfigurationManager.AppSettings["oculusPath"];
         }
 
