@@ -105,5 +105,11 @@ namespace VRChatModeSwitcher
                 fs3.ShowDialog();
             }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Form4 fs4 = new Form4();
+            fs4.ShowDialog();
+        }
     }
 }

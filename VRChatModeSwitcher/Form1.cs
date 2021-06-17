@@ -6,6 +6,8 @@ using Microsoft.Win32;
 using System.Configuration;
 using System.IO;
 using System.Reflection;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace VRChatModeSwitcher
 {
@@ -43,6 +45,8 @@ namespace VRChatModeSwitcher
         string steamPath;
         string oculusPath;
         string arguments;
+
+        Dictionary<string, string> profiles;
         private void ConfigLoad()
         {
             var textSteamPath = ConfigurationManager.AppSettings["steamPath"];
@@ -59,7 +63,7 @@ namespace VRChatModeSwitcher
 
             if ((steamPath == "" || steamPath == null) && (oculusPath == "" || oculusPath == null))
             {
-                MessageBox.Show("Steam版VRChatのインストール場所の読み込みに失敗しました。\n設定からSteam版かOculus版のVRChat.exeのパスを設定してください。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Steam版VRChatのインストール場所の読み込みに失敗しました。\n設定からSteam版かOculus版のVRChat.exeのパスを設定してください。", "情報", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 buttonSelectDesktop.Enabled = false;
                 buttonSelectVR.Enabled = false;
                 radioSteam.Enabled = false;
@@ -72,6 +76,24 @@ namespace VRChatModeSwitcher
                     radioSteam.Checked = true;
                 else if (radioSelected == "2")
                     radioOculus.Checked = true;
+
+
+                string profilesJson = ConfigurationManager.AppSettings["Profiles"];
+                if (profilesJson == "" || profilesJson == null)
+                    profilesJson = @"{""0"":""Default""}";
+                profiles = JsonConvert.DeserializeObject<Dictionary<string, string>>(profilesJson);
+                comboBox1.Items.Clear();
+                foreach (var item in profiles)
+                {
+                    comboBox1.Items.Add($"{item.Key} : {item.Value}");
+                }
+                string selectedProfiles = ConfigurationManager.AppSettings["SelectedProfiles"];
+                if (selectedProfiles == null)
+                    selectedProfiles = "0";
+                if (profiles.Count <= int.Parse(selectedProfiles))
+                    selectedProfiles = "0";
+
+                comboBox1.SelectedIndex = int.Parse(selectedProfiles);
 
                 radioSteam.Enabled = (steamPath != "") && (steamPath != null);
                 radioOculus.Enabled = (oculusPath != "") && (oculusPath != null);
@@ -104,7 +126,9 @@ namespace VRChatModeSwitcher
 
         private bool RunVRChat(bool VRMode)
         {
-            string outArg = arg;
+            string profileNo = comboBox1.SelectedItem.ToString().Split(':')[0]
+                .Substring(0, comboBox1.SelectedItem.ToString().Split(':')[0].Length - 1);
+            string outArg = $"--profile={profileNo} {arg}";
             if (arguments != "")
                 outArg = $"{arguments} {outArg}";
             if (!VRMode)
@@ -165,6 +189,16 @@ namespace VRChatModeSwitcher
                 config.AppSettings.Settings["Selected"].Value = "1";
             else
                 config.AppSettings.Settings["Selected"].Value = "2";
+
+            config.Save();
+        }
+
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            if (config.AppSettings.Settings["SelectedProfiles"] == null)
+                config.AppSettings.Settings.Add("SelectedProfiles", "0");
+            config.AppSettings.Settings["SelectedProfiles"].Value = comboBox1.SelectedIndex.ToString();
 
             config.Save();
         }
