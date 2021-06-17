@@ -40,6 +40,7 @@ namespace VRChatModeSwitcher
             this.button4 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textArguments = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -120,7 +121,7 @@ namespace VRChatModeSwitcher
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 8;
-            this.button4.Text = "v1.2.0";
+            this.button4.Text = "v1.3.0";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -140,11 +141,22 @@ namespace VRChatModeSwitcher
             this.textArguments.Size = new System.Drawing.Size(402, 19);
             this.textArguments.TabIndex = 10;
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(238, 86);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 11;
+            this.button5.Text = "プロファイル編集";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(511, 121);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.textArguments);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button4);
@@ -177,5 +189,6 @@ namespace VRChatModeSwitcher
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textArguments;
+        private System.Windows.Forms.Button button5;
     }
 }

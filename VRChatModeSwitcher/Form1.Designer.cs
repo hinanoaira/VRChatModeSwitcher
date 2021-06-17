@@ -38,6 +38,8 @@
             this.radioSteam = new System.Windows.Forms.RadioButton();
             this.radioOculus = new System.Windows.Forms.RadioButton();
             this.buttonSetting = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.intboxParallel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,7 +61,7 @@
             this.textBoxLink.Multiline = true;
             this.textBoxLink.Name = "textBoxLink";
             this.textBoxLink.ReadOnly = true;
-            this.textBoxLink.Size = new System.Drawing.Size(226, 158);
+            this.textBoxLink.Size = new System.Drawing.Size(226, 136);
             this.textBoxLink.TabIndex = 1;
             // 
             // buttonSelectVR
@@ -143,6 +145,7 @@
             this.radioOculus.TabStop = true;
             this.radioOculus.Text = "Oculus";
             this.radioOculus.UseVisualStyleBackColor = true;
+            this.radioOculus.CheckedChanged += new System.EventHandler(this.radioSteam_CheckedChanged);
             // 
             // buttonSetting
             // 
@@ -154,11 +157,31 @@
             this.buttonSetting.UseVisualStyleBackColor = true;
             this.buttonSetting.Click += new System.EventHandler(this.buttonSetting_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(79, 174);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(163, 23);
+            this.comboBox1.TabIndex = 11;
+            this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 177);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 15);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "プロファイル";
+            // 
             // formVRChatModeSwitcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(254, 301);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.buttonSetting);
             this.Controls.Add(this.radioOculus);
             this.Controls.Add(this.radioSteam);
@@ -194,6 +217,8 @@
         private System.Windows.Forms.RadioButton radioSteam;
         private System.Windows.Forms.RadioButton radioOculus;
         private System.Windows.Forms.Button buttonSetting;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label1;
     }
 }
 

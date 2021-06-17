@@ -27,10 +27,21 @@ namespace VRChatModeSwitcher
         private void buttonOK_Click(object sender, EventArgs e)
         {
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            KeyValueConfigurationCollection settings = config.AppSettings.Settings;
             RegistryKey rkey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 438100");
-            config.AppSettings.Settings["steamPath"].Value = textSteamPath.Text;
-            config.AppSettings.Settings["oculusPath"].Value = textOculusPath.Text;
-            config.AppSettings.Settings["Arguments"].Value = textArguments.Text;
+
+            if (settings["steamPath"] == null)
+                settings.Add("steamPath", "");
+            settings["steamPath"].Value = textSteamPath.Text;
+
+            if (settings["oculusPath"] == null)
+                settings.Add("oculusPath", "");
+            settings["oculusPath"].Value = textOculusPath.Text;
+
+            if (settings["Arguments"] == null)
+                settings.Add("Arguments", "");
+            settings["Arguments"].Value = textArguments.Text;
+
             config.Save();
             ConfigurationManager.RefreshSection("appSettings");
             this.Close();
@@ -93,6 +104,12 @@ namespace VRChatModeSwitcher
                 Form3 fs3 = new Form3();
                 fs3.ShowDialog();
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Form4 fs4 = new Form4();
+            fs4.ShowDialog();
         }
     }
 }
