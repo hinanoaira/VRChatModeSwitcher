@@ -116,9 +116,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Installer\LinkInstaller.csproj">
       <Project>{0bab13f8-91e3-4145-a5a7-de5c02440c3a}</Project>
       <Name>LinkInstaller</Name>

@@ -48,15 +48,16 @@ namespace VRChatModeSwitcher
             var textSteamPath = ConfigurationManager.AppSettings["steamPath"];
             var test = Environment.Is64BitOperatingSystem && !Environment.Is64BitProcess;
             RegistryKey rkey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 438100");
-            if (rkey != null && textSteamPath == "")
+            if (rkey != null && (textSteamPath == "" || textSteamPath == null))
                 steamPath = (string)rkey.GetValue("InstallLocation") + @"\VRChat.exe";
             else
                 steamPath = ConfigurationManager.AppSettings["steamPath"];
 
             oculusPath = ConfigurationManager.AppSettings["oculusPath"];
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             arguments = ConfigurationManager.AppSettings["Arguments"];
 
-            if (steamPath == "" && oculusPath == "")
+            if ((steamPath == "" || steamPath == null) && (oculusPath == "" || oculusPath == null))
             {
                 MessageBox.Show("Steam版VRChatのインストール場所の読み込みに失敗しました。\n設定からSteam版かOculus版のVRChat.exeのパスを設定してください。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 buttonSelectDesktop.Enabled = false;
@@ -72,10 +73,10 @@ namespace VRChatModeSwitcher
                 else if (radioSelected == "2")
                     radioOculus.Checked = true;
 
-                radioSteam.Enabled = (steamPath != "");
-                radioOculus.Enabled = (oculusPath != "");
-                buttonSelectDesktop.Enabled = (radioOculus.Checked || radioSteam.Checked);
-                buttonSelectVR.Enabled = (radioOculus.Checked || radioSteam.Checked);
+                radioSteam.Enabled = (steamPath != "") && (steamPath != null);
+                radioOculus.Enabled = (oculusPath != "") && (oculusPath != null);
+                buttonSelectDesktop.Enabled = radioOculus.Checked || radioSteam.Checked;
+                buttonSelectVR.Enabled = radioOculus.Checked || radioSteam.Checked;
             }
 
         }
@@ -157,6 +158,8 @@ namespace VRChatModeSwitcher
             buttonSelectDesktop.Enabled = true;
             buttonSelectVR.Enabled = true;
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            if (config.AppSettings.Settings["Selected"] == null)
+                config.AppSettings.Settings.Add("Selected", "0");
 
             if (radioSteam.Checked)
                 config.AppSettings.Settings["Selected"].Value = "1";

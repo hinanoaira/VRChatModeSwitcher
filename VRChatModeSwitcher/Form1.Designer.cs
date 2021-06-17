@@ -143,6 +143,7 @@
             this.radioOculus.TabStop = true;
             this.radioOculus.Text = "Oculus";
             this.radioOculus.UseVisualStyleBackColor = true;
+            this.radioOculus.CheckedChanged += new System.EventHandler(this.radioSteam_CheckedChanged);
             // 
             // buttonSetting
             // 
