@@ -17,6 +17,7 @@ namespace VRChatModeSwitcher
         public Form4()
         {
             InitializeComponent();
+            ActiveControl = buttonOk;
             string profilesJson = ConfigurationManager.AppSettings["Profiles"];
             if (profilesJson == "" || profilesJson == null)
                 profilesJson = @"{""0"":""Default""}";

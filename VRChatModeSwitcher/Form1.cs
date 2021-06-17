@@ -25,6 +25,7 @@ namespace VRChatModeSwitcher
                 arg += item + " ";
             }
             InitializeComponent();
+            ActiveControl = buttonCancel;
             ConfigLoad();
 
             if (arg == "")
