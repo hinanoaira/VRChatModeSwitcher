@@ -1,0 +1,2 @@
+# VRChatModeSwitcher
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4eefbb212b00424591798b4c8459b681)](https://app.codacy.com/gh/HinanoAira/VRChatModeSwitcher?utm_source=github.com&utm_medium=referral&utm_content=HinanoAira/VRChatModeSwitcher&utm_campaign=Badge_Grade_Settings)
