@@ -14,16 +14,10 @@ namespace VRChatModeSwitcher
     public partial class formVRChatModeSwitcher : Form
     {
         // 初期化
-        private readonly string[] args;
         private readonly string arg;
         public formVRChatModeSwitcher(string[] inArgs)
         {
-            args = inArgs;
-            arg = "";
-            foreach (var item in args)
-            {
-                arg += item + " ";
-            }
+            arg = string.Join("", inArgs);
             InitializeComponent();
             ConfigLoad();
 
@@ -50,7 +44,6 @@ namespace VRChatModeSwitcher
         private void ConfigLoad()
         {
             var textSteamPath = ConfigurationManager.AppSettings["steamPath"];
-            var test = Environment.Is64BitOperatingSystem && !Environment.Is64BitProcess;
             RegistryKey rkey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 438100");
             if (rkey != null && (textSteamPath == "" || textSteamPath == null))
                 steamPath = (string)rkey.GetValue("InstallLocation") + @"\VRChat.exe";
@@ -58,7 +51,6 @@ namespace VRChatModeSwitcher
                 steamPath = ConfigurationManager.AppSettings["steamPath"];
 
             oculusPath = ConfigurationManager.AppSettings["oculusPath"];
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             arguments = ConfigurationManager.AppSettings["Arguments"];
 
             if ((steamPath == "" || steamPath == null) && (oculusPath == "" || oculusPath == null))
@@ -148,7 +140,7 @@ namespace VRChatModeSwitcher
                 Environment.CurrentDirectory = path;
                 for (int i = 0; i < intboxParallel.Value; i++)
                 {
-                    Process p = Process.Start(psi);
+                    _ = Process.Start(psi);
                     if (VRMode && i == 0) psi.Arguments = $"--no-vr {outArg}";
                 }
                 return true;
