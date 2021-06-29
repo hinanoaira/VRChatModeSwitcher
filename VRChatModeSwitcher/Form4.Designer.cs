@@ -57,7 +57,6 @@ namespace VRChatModeSwitcher
             // 
             // Value
             // 
-            this.Value.DisplayIndex = 1;
             this.Value.Text = "Name";
             this.Value.Width = 157;
             // 
@@ -105,7 +104,7 @@ namespace VRChatModeSwitcher
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.listView1);
             this.Name = "Form4";
-            this.Text = "Form4";
+            this.Text = "プロファイル";
             this.ResumeLayout(false);
 
         }

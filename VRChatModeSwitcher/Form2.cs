@@ -14,6 +14,7 @@ namespace VRChatModeSwitcher
         public Form2()
         {
             InitializeComponent();
+            ActiveControl = buttonOK;
             textSteamPath.Text = ConfigurationManager.AppSettings["steamPath"];
             RegistryKey rkey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 438100");
             if (rkey != null && textSteamPath.Text == "")

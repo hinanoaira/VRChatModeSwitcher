@@ -17,6 +17,7 @@ namespace VRChatModeSwitcher
         public Form4()
         {
             InitializeComponent();
+            ActiveControl = buttonOk;
             string profilesJson = ConfigurationManager.AppSettings["Profiles"];
             if (profilesJson == "" || profilesJson == null)
                 profilesJson = @"{""0"":""Default""}";
@@ -48,9 +49,9 @@ namespace VRChatModeSwitcher
         {
             if (listView1.SelectedItems.Count == 0)
                 return;
-            if(listView1.Items.Count == 1)
+            if(listView1.SelectedItems[0].SubItems[1].Text == "0")
             {
-                MessageBox.Show("プロファイルを全て消すことはできません。", "情報", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("デフォルトプロファイルを消すことはできません", "情報", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 

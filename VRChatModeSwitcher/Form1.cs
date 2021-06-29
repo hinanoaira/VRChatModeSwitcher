@@ -19,6 +19,7 @@ namespace VRChatModeSwitcher
         {
             arg = string.Join("", inArgs);
             InitializeComponent();
+            ActiveControl = buttonCancel;
             ConfigLoad();
 
             if (arg == "")
