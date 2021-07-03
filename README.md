@@ -20,4 +20,4 @@ VRモードで起動するか選べるようにするためのプログラムで
 使用ライブラリ : .NET Framework 4.7.2
 
 ## ダウンロード
-https://github.com/HinanoAira/VRChatModeSwitcher/releases/download/v1.3.0/VRChatModeSwitcher1.3.0.zip
+https://github.com/HinanoAira/VRChatModeSwitcher/releases/latest/download/VRChatModeSwitcher.zip
