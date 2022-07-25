@@ -128,7 +128,7 @@ namespace VRChatModeSwitcher
                 outArg = $"--no-vr {outArg}";
 
             ProcessStartInfo psi = new ProcessStartInfo();
-            psi.FileName = "VRChat.exe";
+            psi.FileName = "launch.exe";
             psi.Arguments = outArg;
             string path = "";
 
