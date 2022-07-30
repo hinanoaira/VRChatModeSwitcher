@@ -23,6 +23,7 @@ namespace VRChatModeSwitcher
                 button2.Enabled = false;
             }
             textOculusPath.Text = ConfigurationManager.AppSettings["oculusPath"];
+            textArguments.Text = ConfigurationManager.AppSettings["Arguments"];
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
