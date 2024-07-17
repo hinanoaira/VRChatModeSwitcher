@@ -17,7 +17,7 @@ namespace VRChatModeSwitcher
         private readonly string arg;
         public formVRChatModeSwitcher(string[] inArgs)
         {
-            arg = string.Join("", inArgs);
+            arg = string.Join(" ", inArgs);
             InitializeComponent();
             ActiveControl = buttonCancel;
             ConfigLoad();
@@ -128,7 +128,14 @@ namespace VRChatModeSwitcher
                 outArg = $"--no-vr {outArg}";
 
             ProcessStartInfo psi = new ProcessStartInfo();
-            psi.FileName = "launch.exe";
+            if (arg.Contains("BuildAndRun"))
+            {
+                psi.FileName = "VRChat.exe";
+            }
+            else
+            {
+                psi.FileName = "launch.exe";
+            }
             psi.Arguments = outArg;
             string path = "";
 
